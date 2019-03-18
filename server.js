@@ -9,16 +9,10 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.get('/', (req, res) => {
-    return app.render(req, res, '/')
-  })
-
-  server.get('/about', (req, res) => {
-    return app.render(req, res, '/about')
-  })
-
-  server.get('/post/:id', (req, res) => {
-    return app.render(req, res, '/post', { id: req.params.id })
+  server.get('/p/:id', (req, res) => {
+    const actualPage = '/post'
+    const queryParams = { id: req.params.id }
+    app.render(req, res, actualPage, queryParams)
   })
 
   server.get('*', (req, res) => {
@@ -29,4 +23,7 @@ app.prepare().then(() => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })
+}).catch(ex => {
+  console.error(ex.stack)
+  process.exit(1)
 })
