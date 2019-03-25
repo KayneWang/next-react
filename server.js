@@ -15,6 +15,10 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams)
   })
 
+  server.get('/api/getsome', (req, res) => {
+    res.json({ user: 'tobi' })
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
