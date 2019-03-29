@@ -15,6 +15,11 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams)
   })
 
+  server.get('/email/:receiver', (req, res, next) => {
+    const actualPage = '/email'
+    app.render(req, res, actualPage)
+  })
+
   server.get('/api/getsome', (req, res) => {
     res.json({ user: 'tobi' })
   })
@@ -31,3 +36,7 @@ app.prepare().then(() => {
   console.error(ex.stack)
   process.exit(1)
 })
+
+// const res = await Axios.get('http://10.114.16.41:8000/cost_email/overview/', {
+//   params: { receiver, dimension: 'dept' }
+// })

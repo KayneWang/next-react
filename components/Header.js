@@ -15,6 +15,9 @@ const Header = () => (
     <Link href="/nossr">
       <a style={LinkStyle}>NoSSR</a>
     </Link>
+    <Link href={`/email?receiver=zhoushanfei`} as="/email/zhoushanfei">
+      <a style={LinkStyle}>Email</a>
+    </Link>
   </div>
 )
 
